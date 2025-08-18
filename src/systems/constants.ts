@@ -1,3 +1,3 @@
 
-export const GUILDS = ["351824506773569541", "668485643487412234"];
+export const GUILDS = process.env.GUILDS?.split(",") ?? [];
 export const STATS_INTERVAL_MINS = 6;

@@ -44,3 +44,7 @@ client.login(process.env.BOT_TOKEN);
 
 // Register events
 events.client(client);
+
+// Register global commands
+commands.setToken(process.env.BOT_TOKEN!, process.env.BOT_APP_ID!);
+commands.registerAll();
