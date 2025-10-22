@@ -7,7 +7,7 @@ import type { Message } from "discord.js";
 
 function infoEmbed() {
     const funSuggestion = [
-        "Try to blame Cannicide and Zombie more",
+        "Try to blame Elvenide and Zombie more",
         "Give everyone the #BlameZombie tag",
         "Avoid using #BlameJay anywhere",
         "I'm from planet minecraft give me op",
@@ -37,8 +37,8 @@ class SuggestionsListener {
 
         try {
             if (isSuggestion) {
-                await message.react("713053971757006950");
-                await message.react("713053971211878452");
+                await message.react("✅");
+                await message.react("❌");
             }
             else {
                 await message.delete();

@@ -90,7 +90,7 @@ new Command("rankadmin", "Command to manage ranks.")
     const sub = i.options.getSubcommand(true);
     switch (sub) {
         case "remove":
-            if (i.user.id != "274639466294149122") return await i.reply({ content: "> <:no:669928674119778304> **Only Cannicide is allowed to use the `/rankadmin remove` command.**", ephemeral: true });
+            if (i.user.id != process.env.OWNER_ID) return await i.reply({ content: `> <:no:669928674119778304> **Only ${process.env.OWNER_USERNAME} is allowed to use the \`/rankadmin remove\` command.**`, ephemeral: true });
             await i.deferReply({ ephemeral: true });
             
             const user0 = i.options.getUser("user", true);
@@ -100,7 +100,7 @@ new Command("rankadmin", "Command to manage ranks.")
             await i.editReply(`> ✅ **Successfully removed rank of user:** ${user0}`);
         return;
         case "import":
-            if (i.user.id != "274639466294149122") return await i.reply({ content: "> <:no:669928674119778304> **Only Cannicide is allowed to use the `/rankadmin import` command.**", ephemeral: true });
+            if (i.user.id != process.env.OWNER_ID) return await i.reply({ content: `> <:no:669928674119778304> **Only ${process.env.OWNER_USERNAME} is allowed to use the \`/rankadmin import\` command.**`, ephemeral: true });
             await i.deferReply({ ephemeral: true });
 
             const user1 = i.options.getUser("user", true);
@@ -113,14 +113,14 @@ new Command("rankadmin", "Command to manage ranks.")
             await i.editReply(`> ✅ **Successfully imported rank of user:** ${user1}`);
         return;
         case "clear":
-            if (i.user.id != "274639466294149122") return await i.reply({ content: "> <:no:669928674119778304> **Only Cannicide is allowed to use the `/rankadmin clear` command.**", ephemeral: true });
+            if (i.user.id != process.env.OWNER_ID) return await i.reply({ content: `> <:no:669928674119778304> **Only ${process.env.OWNER_USERNAME} is allowed to use the \`/rankadmin clear\` command.**`, ephemeral: true });
             await i.deferReply({ ephemeral: true });
 
             await clearXp();
             await i.editReply(`> ✅ **Successfully cleared rank data.**`);
         return;
         case "simulate":
-            if (i.user.id != "274639466294149122") return await i.reply({ content: "> <:no:669928674119778304> **Only Cannicide is allowed to use the `/rankadmin simulate` command.**", ephemeral: true });
+            if (i.user.id != process.env.OWNER_ID) return await i.reply({ content: `> <:no:669928674119778304> **Only ${process.env.OWNER_USERNAME} is allowed to use the \`/rankadmin simulate\` command.**`, ephemeral: true });
             await i.deferReply({ ephemeral: true });
 
             const messages = i.options.getInteger("messages", true);

@@ -1,7 +1,7 @@
 # Jaybot
 An open-source Discord bot for the Zombie Horde Minecraft server, built with a TypeScript-Discord.js-ExpressJS backend, React frontend, and MongoDB database.
 
-Now powered by Cannicide's [Brynjolf suite](https://www.npmjs.com/package/@brynjolf/commands) - a set of efficient, powerful, and adaptive systems for command creation, command handling, and event handling! Combined with TypeScript, this suite makes Discord bot creation easier and more powerful than ever before.
+Now powered by Elvenide's [Brynjolf suite](https://www.npmjs.com/package/@brynjolf/commands) - a set of efficient, powerful, and adaptive systems for command creation, command handling, and event handling! Combined with TypeScript, this suite makes Discord bot creation easier and more powerful than ever before.
 
 ## Features
 
@@ -17,7 +17,7 @@ An advanced rank system that rewards users with XP when they send messages. Uses
 > **Rank Leaderboards** (`/levels`)\
 > ![RANK_LEADERBOARDS](docs/demo-rank-lb.png)
 
-A live example of the Rank Leaderboards page can be found [here](https://zh.cannicide.net/ranks).
+A live example of the Rank Leaderboards page can be found [here](https://zh.elvenide.com/ranks).
 
 ### Minecraft Stat Channels
 A Discord category channel can be configured to contain two dynamic "stat" channels that show how many players are on the Minecraft server and whether the server is online, respectively. These stat channels automatically update every 6 minutes, allowing users to get mostly accurate information while avoiding Discord's rate limits.

@@ -104,7 +104,7 @@ class Ranks extends Page {
                     </Section>
                     <Section>
                         <Typography variant="overline" display="block" gutterBottom sx={{ textAlign: "center" }}>
-                            Zhorde Jaybot by <Link href="https://github.com/Cannicide" underline="none" target="_blank" rel="noopener">Cannicide</Link>
+                            Zhorde Jaybot by <Link href="https://github.com/Elvenide" underline="none" target="_blank" rel="noopener">Elvenide</Link>
                         </Typography>
                     </Section>
                 </Main>
