@@ -19,7 +19,7 @@ app.get("/api/ranks/top", async (req, res) => {
     res.type("json");
 
     const top = await getTop100();
-    if (!top?.length) {
+    if (!top) {
         res.send({ error: "ErrorNoExist: Failed to find all-time rank data." });
         return;
     }
@@ -33,7 +33,7 @@ app.get("/api/ranks/top/monthly", async (req, res) => {
     res.type("json");
 
     const top = await getTop100(true);
-    if (!top?.length) {
+    if (!top) {
         res.send({ error: "ErrorNoExist: Failed to find monthly rank data." });
         return;
     }
