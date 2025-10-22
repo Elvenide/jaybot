@@ -70,11 +70,8 @@ An automated system that adds a specific role to a user when they accept the Dis
 
 ### Rebuilding
 
-- If you make changes to the React webpages' code:
-  - Rebuild the pages when starting the bot by running `docker-compose -p jaybot up --build`
-- If you make changes to the Typescript code:
-  - No extra steps are needed
-  - The default run command (`docker-compose -p jaybot up`) will automatically rebuild the Typescript code when starting it
+- If you make changes to the code:
+  - Rebuild the bot when starting it by running `docker-compose -p jaybot up --build`
 
 ### Stopping
 

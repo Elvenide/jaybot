@@ -16,8 +16,8 @@ new Command("yeanay", "Admin-only command to add a yea-nay vote to a specified m
         return;
     }
 
-    await msg.react("713053971757006950");
-    await msg.react("713053971211878452");
+    await msg.react("✅");
+    await msg.react("❌");
 
     await wait(1000);
     i.editReply("Successfully added a reaction vote to the message.");
