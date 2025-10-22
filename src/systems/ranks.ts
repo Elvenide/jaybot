@@ -298,7 +298,7 @@ export async function updateRank(user: User, messages=1, useCooldown=true) {
             playerAvatar: user?.displayAvatarURL(),
             customColor: isDarkColor(user?.accentColor) ? null : user.hexAccentColor,
             xp: 0,
-            level: 1,
+            level: 0,
             messages: 0,
             cooldown: Date.now() - 61 * 1000
         });
@@ -319,7 +319,7 @@ export async function updateRank(user: User, messages=1, useCooldown=true) {
             playerAvatar: user?.displayAvatarURL(),
             customColor: isDarkColor(user?.accentColor) ? null : user.hexAccentColor,
             xp: 0,
-            level: 1
+            level: 0
         });
         playerRankMonthly = await playerRanksMonthlyDB.findOne({
             playerId: user.id

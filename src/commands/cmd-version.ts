@@ -5,6 +5,6 @@ new Command("version", "Returns the current version of Jaybot.")
 .execute(i => {
     i.reply({
         ephemeral: true,
-        content: "> ### Jaybot v5.0.0"
+        content: "> ### Jaybot v5.1.0"
     });
 });
