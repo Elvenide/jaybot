@@ -23,7 +23,7 @@ function isDarkColor(colorNum: number|null|undefined) {
 
 function getLeaderboards() {
     // Get leaderboards link for guild
-    return `https://zh.cannicide.net/ranks`;
+    return `https://zh.elvenide.com/ranks`;
 }
 
 function getFancyUsername(name: string) {
