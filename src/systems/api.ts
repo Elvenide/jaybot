@@ -1,6 +1,6 @@
 import express from "express";
 import path from "node:path";
-import { getTop100, getUser } from "./ranks.js";
+import { getTop100, getUser, getUserMonthly } from "./ranks.js";
 import type { Response } from "express";
 
 const app = express();
@@ -52,6 +52,24 @@ app.get("/api/ranks/user/:id", async (req, res) => {
     }
 
     const user = await getUser(req.params.id);
+    if (!user?.playerId) {
+        res.send({ error: "ErrorNoExist: Failed to find user rank data." });
+        return;
+    }
+    res.send(JSON.stringify(user));
+});
+
+// API get rank data of single user monthly
+app.get("/api/ranks/user/:id/monthly", async (req, res) => {
+    cors(res);
+    res.type("json");
+
+    if (!req.params.id) {
+        res.send({ error: "ErrorBadInput: Invalid user ID provided." });
+        return;
+    }
+
+    const user = await getUserMonthly(req.params.id);
     if (!user?.playerId) {
         res.send({ error: "ErrorNoExist: Failed to find user rank data." });
         return;
