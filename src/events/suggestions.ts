@@ -33,7 +33,7 @@ class SuggestionsListener {
         if (!message.channel.name.match("suggestions") || message.author.bot) return;
         // If above conditions pass, a suggestion message has been created
 
-        const isSuggestion = message.content?.toLowerCase()?.startsWith("suggestion:");
+        const isSuggestion = message.content?.toLowerCase()?.startsWith("suggestion:") && !message.system;
 
         try {
             if (isSuggestion) {
@@ -42,9 +42,11 @@ class SuggestionsListener {
             }
             else {
                 await message.delete();
-                const info = await message.channel.send(infoEmbed());
-                await wait(15000);
-                info.delete();
+                if (!message.system) {
+                    const info = await message.channel.send(infoEmbed());
+                    await wait(15000);
+                    info.delete();
+                }
             }
         }
         catch (err: any) {
