@@ -10,12 +10,12 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "node ./lib/index.js"
+    "start": "tsx ./src/index.ts"
   },
   "dependencies": {
     "@brynjolf/commands": "^0.0.1",
     "@brynjolf/events": "^0.0.1",
-    "discord-arts-zhorde": "github:cannicide/discord-arts-zhorde",
+    "discord-arts-zhorde": "github:Elvenide/discord-arts-zhorde",
     "discord.js": "^14.21.0",
     "express": "^4.21.2",
     "miniget": "^4.2.3",
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^22.17.2",
+    "tsx": "^4.20.6",
     "typescript": "^5.9.2"
   },
   "engines": {

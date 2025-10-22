@@ -3,13 +3,17 @@ import { events } from "@brynjolf/events";
 import { GUILDS } from "./systems/constants.js";
 import { Client, IntentsBitField } from "discord.js";
 
-// Import commands
-import "./commands/cmd-version.js";
-import "./commands/cmd-yeanay.js";
-import "./commands/cmd-reactionroles.js";
-import "./commands/cmd-statsadmin.js";
-import "./commands/cmd-rank.js";
-import "./commands/cmd-pluralkit.js";
+// Unregister all existing commands
+commands.setToken(process.env.BOT_TOKEN!, process.env.BOT_APP_ID!);
+await commands.unregisterAll();
+
+// Import commands dynamically after unregistering all existing commands
+await import("./commands/cmd-version.js");
+await import("./commands/cmd-yeanay.js");
+await import("./commands/cmd-reactionroles.js");
+await import("./commands/cmd-statsadmin.js");
+await import("./commands/cmd-rank.js");
+await import("./commands/cmd-pluralkit.js");
 
 // Import event systems
 import "./events/ruleroles.js";

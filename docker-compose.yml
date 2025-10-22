@@ -1,4 +1,4 @@
-version: "1.0"
+
 services:
   # A user-defined name for this container
   jaybot:
@@ -17,3 +17,5 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+      - /app/web/node_modules
+      - /app/web/build

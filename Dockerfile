@@ -22,6 +22,12 @@ WORKDIR /app
 # Install project dependencies
 RUN npm i
 
+# Build react page (in web/ directory)
+RUN cd /app/web && npm i && npm run build
+
+# Return to app directory
+RUN cd /app
+
 # Open ports, start the application.
 EXPOSE 8500
 CMD exec npm start

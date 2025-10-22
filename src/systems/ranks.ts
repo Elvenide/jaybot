@@ -108,7 +108,7 @@ export async function updateXp(playerRank: PlayerRank, newXp: number, isLevelUp:
     });
 }
 
-export async function updateXpMonthly(playerRank: PlayerRank, newXp: number, isLevelUp: boolean) {
+export async function updateXpMonthly(playerRank: PlayerRank, newXp: number, isLevelUp: boolean, user: User) {
     // Update monthly xp, level, and month timestamp
     
     return await playerRanksMonthlyDB.updateOne({
@@ -117,6 +117,9 @@ export async function updateXpMonthly(playerRank: PlayerRank, newXp: number, isL
         $set: {
             xp: playerRank.xp + newXp,
             level: isLevelUp ? playerRank.level + 1 : playerRank.level,
+            playerUsername: getFancyUsername(user.username),
+            playerAvatar: user?.displayAvatarURL(),
+            customColor: isDarkColor(user?.accentColor) ? null : user.hexAccentColor
         }
     });
 }
@@ -129,9 +132,9 @@ export async function checkMonthUpdate() {
         const top100 = await getTop100(true);
         await playerRanksMonthlyDB.deleteMany({});
         await playerRankWinnersDB.insertOne({
-                firstUsername: top100[0].playerUsername,
-                secondUsername: top100[1].playerUsername,
-                thirdUsername: top100[2].playerUsername,
+                firstUsername: top100?.[0]?.playerUsername,
+                secondUsername: top100?.[1]?.playerUsername,
+                thirdUsername: top100?.[2]?.playerUsername,
                 month: new Date().getMonth(),
                 year: new Date().getFullYear()
             } as PlayerRankWinner);
@@ -293,7 +296,11 @@ export async function updateRank(user: User, messages=1, useCooldown=true) {
             playerId: user.id,
             playerUsername: getFancyUsername(user.username),
             playerAvatar: user?.displayAvatarURL(),
-            customColor: isDarkColor(user?.accentColor) ? null : user.hexAccentColor
+            customColor: isDarkColor(user?.accentColor) ? null : user.hexAccentColor,
+            xp: 0,
+            level: 1,
+            messages: 0,
+            cooldown: Date.now() - 61 * 1000
         });
         playerRank = await playerRanksDB.findOne({
             playerId: user.id
@@ -310,7 +317,9 @@ export async function updateRank(user: User, messages=1, useCooldown=true) {
             playerId: user.id,
             playerUsername: getFancyUsername(user.username),
             playerAvatar: user?.displayAvatarURL(),
-            customColor: isDarkColor(user?.accentColor) ? null : user.hexAccentColor
+            customColor: isDarkColor(user?.accentColor) ? null : user.hexAccentColor,
+            xp: 0,
+            level: 1
         });
         playerRankMonthly = await playerRanksMonthlyDB.findOne({
             playerId: user.id
@@ -328,5 +337,5 @@ export async function updateRank(user: User, messages=1, useCooldown=true) {
     await updateCooldown(playerRank);
 
     await updateXp(playerRank, newXp, isLevelUpData, user, messages);
-    await updateXpMonthly(playerRankMonthly, newXp, isLevelUpMonthlyData);
+    await updateXpMonthly(playerRankMonthly, newXp, isLevelUpMonthlyData, user);
 }
