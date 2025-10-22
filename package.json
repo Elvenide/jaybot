@@ -16,10 +16,10 @@
     "@brynjolf/commands": "^0.0.1",
     "@brynjolf/events": "^0.0.1",
     "discord-arts-zhorde": "github:Elvenide/discord-arts-zhorde",
-    "discord.js": "^14.21.0",
+    "discord.js": "^14.23.2",
     "express": "^4.21.2",
     "miniget": "^4.2.3",
-    "mongodb": "^6.18.0"
+    "mongodb": "^6.20.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
