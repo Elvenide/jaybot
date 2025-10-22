@@ -11,7 +11,7 @@ export default function RankLeaderboard({ users, isMonthly }) {
         <List sx={{ width: "100%" }}>
             <LeaderboardRankHeader />
             {users.map((user, i) => 
-                <LeaderboardRankEntry key={i} pid={user?.playerId} avatar={user?.playerAvatar} username={user?.playerUsername} xp={isMonthly ? user?.xpMonthly : user?.xp} level={isMonthly ? user?.levelMonthly : user?.level} messages={isMonthly ? inferMonthlyMessages(user?.xpMonthly) : user?.messages} index={i} isMonthly={isMonthly} />
+                <LeaderboardRankEntry key={i} pid={user?.playerId} avatar={user?.playerAvatar} username={user?.playerUsername} xp={user?.xp} level={user?.level} messages={isMonthly ? inferMonthlyMessages(user?.xp) : user?.messages} index={i} isMonthly={isMonthly} />
             )}
         </List>
     );

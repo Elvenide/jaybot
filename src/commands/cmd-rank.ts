@@ -1,6 +1,7 @@
 import { Command, opts, Adapter } from "@brynjolf/commands";
 import {
     getUser,
+    getUserMonthly,
     sendRankCardMonthly,
     sendRankCard,
     sendLeaderboardsMessage,
@@ -34,7 +35,9 @@ const rankCommand = async (i: ChatInputCommandInteraction) => {
 
     if (i.commandName == "rankmonthly") {
         // Retrieve monthly rank card
-        await sendRankCardMonthly(i, playerRank, member);
+        const playerRankMonthly = await getUserMonthly(user?.id ?? i.user.id);
+        if (!playerRankMonthly || !playerRankMonthly.playerId) return await i.editReply(`> <:no:669928674119778304> **${user ? "The provided user does" : "You do"} not have a monthly rank yet.**`);
+        await sendRankCardMonthly(i, playerRankMonthly, member);
     }
     else {
         // Retrieve all-time rank card

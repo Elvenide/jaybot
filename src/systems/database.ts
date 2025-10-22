@@ -1,4 +1,6 @@
 import { WithId, Document, MongoClient, ServerApiVersion } from 'mongodb';
+import { readFileSync, writeFileSync } from 'node:fs';
+import path from 'node:path';
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}?${process.env.DB_PARAMS}`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -24,7 +26,18 @@ export const reactionRolesDB = collection("misc", "reactionroles");
 export const statCategoryDB = collection("stats", "categories");
 export const statUptimeDB = collection("stats", "uptime");
 export const playerRanksDB = collection("players", "ranks");
+export const playerRanksMonthlyDB = collection("players", "ranksMonthly");
 export const playerRankWinnersDB = collection("players", "rankwinners");
+
+// Export month data
+
+export function getLatestMonth(): number {
+    return JSON.parse(readFileSync(path.resolve("/app/data/month.json"), "utf-8")).latestMonth;
+}
+
+export function setLatestMonth(month: number) {
+    writeFileSync(path.resolve("/app/data/month.json"), JSON.stringify({ latestMonth: month }));
+}
 
 // Export interfaces
 
@@ -50,14 +63,11 @@ export interface PlayerRank extends WithId<Document> {
     cooldown: number;
     customColor: string;
     level: number;
-    levelMonthly: number;
     messages: number;
-    monthTimestamp: number;
     playerAvatar: string;
     playerId: string;
     playerUsername: string;
     xp: number;
-    xpMonthly: number;
 }
 
 export interface PlayerRankWinner extends WithId<Document> {
