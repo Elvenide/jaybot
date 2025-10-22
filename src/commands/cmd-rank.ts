@@ -7,7 +7,6 @@ import {
     sendLeaderboardsMessage,
     removeUser,
     setXp,
-    clearXp,
     updateRank as simulateMessages
 } from "../systems/ranks.js";
 import type { ChatInputCommandInteraction, GuildMember } from "discord.js";
@@ -64,8 +63,6 @@ importCmd.suboptions([
     opts.int({ name: "level", desc: "Level to set.", req: true })
 ]);
 
-const clearCmd = opts.subc({ name: "clear", desc: "Admin-only command to clear rank data." });
-
 const simulateCmd = opts.subc({ name: "simulate", desc: "Admin-only command to simulate xp gain." });
 simulateCmd.suboptions([
     opts.int({ name: "messages", desc: "Number of messages to simulate.", req: true })
@@ -86,7 +83,6 @@ new Command("rankmonthly", "View your Discord message XP monthly rank.")
 new Command("rankadmin", "Command to manage ranks.")
 .options(removeCmd)
 .options(importCmd)
-.options(clearCmd)
 .options(simulateCmd)
 .adapter(Adapter.DJS)
 .execute(async i => {
@@ -114,13 +110,6 @@ new Command("rankadmin", "Command to manage ranks.")
             else return await i.editReply("> <:no:669928674119778304> **Failed to retrieve the provided user.**");
 
             await i.editReply(`> ✅ **Successfully imported rank of user:** ${user1}`);
-        return;
-        case "clear":
-            if (i.user.id != process.env.OWNER_ID) return await i.reply({ content: `> <:no:669928674119778304> **Only ${process.env.OWNER_USERNAME} is allowed to use the \`/rankadmin clear\` command.**`, ephemeral: true });
-            await i.deferReply({ ephemeral: true });
-
-            await clearXp();
-            await i.editReply(`> ✅ **Successfully cleared rank data.**`);
         return;
         case "simulate":
             if (i.user.id != process.env.OWNER_ID) return await i.reply({ content: `> <:no:669928674119778304> **Only ${process.env.OWNER_USERNAME} is allowed to use the \`/rankadmin simulate\` command.**`, ephemeral: true });

@@ -91,10 +91,6 @@ export async function setXp(userId: string, xp: number, level: number, messages:
     });
 }
 
-export async function clearXp() {
-    return await playerRanksDB.deleteMany({});
-}
-
 export async function updateXp(playerRank: PlayerRank, newXp: number, isLevelUp: boolean, user: User, newMessages=1) {
     // Update xp and level
 
@@ -131,6 +127,7 @@ export async function checkMonthUpdate() {
         // Clear, and then post to, monthly winners database
         await playerRankWinnersDB.deleteMany({});
         const top100 = await getTop100(true);
+        await playerRanksMonthlyDB.deleteMany({});
         await playerRankWinnersDB.insertOne({
                 firstUsername: top100[0].playerUsername,
                 secondUsername: top100[1].playerUsername,
