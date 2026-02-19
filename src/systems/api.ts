@@ -14,6 +14,11 @@ function cors(res: Response) {
     res.set('Access-Control-Allow-Origin', 'http://127.0.0.1:8501');
 }
 
+// Util function to enable unrestricted CORS headers on a route
+function noCors(res: Response) {
+    res.set('Access-Control-Allow-Origin', '*');
+}
+
 // API get top 100 ranks
 app.get("/api/ranks/top", async (req, res) => {
     cors(res);
@@ -80,6 +85,7 @@ app.get("/api/ranks/user/:id/monthly", async (req, res) => {
 
 // Public API get cached MC/Discord stats
 app.get("/api/public/stats", (req, res) => {
+    noCors(res);
     res.type("json");
     res.send(JSON.stringify(getCachedStats()));
 });
