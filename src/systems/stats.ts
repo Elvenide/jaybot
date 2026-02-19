@@ -98,6 +98,7 @@ export async function statsDisplay(client: Client, initial=false) {
 
 export function getCachedStats() {
     return {
+        ip: "zombiehorde.net",
         is_online: previousData?.online ?? true,
         mc_online_users: previousData?.players ?? -1,
         discord_online_users: previousData?.maxPlayers ?? -1
