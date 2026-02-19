@@ -2,6 +2,7 @@ import express from "express";
 import path from "node:path";
 import { getTop100, getUser, getUserMonthly } from "./ranks.js";
 import type { Response } from "express";
+import { getCachedStats } from "./stats.js";
 
 const app = express();
 
@@ -75,6 +76,12 @@ app.get("/api/ranks/user/:id/monthly", async (req, res) => {
         return;
     }
     res.send(JSON.stringify(user));
+});
+
+// Public API get cached MC/Discord stats
+app.get("/api/public/stats", (req, res) => {
+    res.type("json");
+    res.send(JSON.stringify(getCachedStats()));
 });
 
 // React route handling
