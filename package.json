@@ -1,6 +1,6 @@
 {
   "name": "jaybot",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "description": "The official discord bot of ZombieHorde.net",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -28,7 +28,7 @@
   },
   "license": "MIT",
   "keywords": [
-    "node",
+    "bun",
     "zhorde",
     "express"
   ],
