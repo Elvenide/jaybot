@@ -1,3 +1,6 @@
 node_modules/
 docs/
 sample.env
+README.md
+docker-compose.yml
+Dockerfile

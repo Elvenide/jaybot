@@ -1,5 +1,5 @@
-# Jaybot v5.1
-An open-source Discord bot for the Zombie Horde Minecraft server, built with a TypeScript-Discord.js-ExpressJS backend, React frontend, and MongoDB database.
+# Jaybot v5.2
+An open-source Discord bot for the Zombie Horde Minecraft server, built with a TypeScript + Discord.js + ExpressJS backend, React frontend, MongoDB database, and the Bun runtime.
 
 Now powered by Elvenide's [Brynjolf suite](https://www.npmjs.com/package/@brynjolf/commands) - a set of efficient, powerful, and adaptive systems for command creation, command handling, and event handling! Combined with TypeScript, this suite makes Discord bot creation easier and more powerful than ever before.
 
@@ -45,9 +45,9 @@ An automated system that adds a specific role to a user when they accept the Dis
 ### Prerequisites
 
 - Docker
-  - Download and install Docker to easily and securely run the bot with just one command
-- Node.js
-  - Download and install Node.js
+  - Download and install Docker Desktop to easily and securely run the bot with just one command
+- Bun
+  - Download and install [Bun](https://bun.com/docs/installation#package-managers)
 - MongoDB
   - Create a MongoDB database, and write down the connection URL
   - Create user credentials for your database, and write down the username and password
@@ -65,19 +65,34 @@ An automated system that adds a specific role to a user when they accept the Dis
 1. Clone this repository
 2. Rename `sample.env` to `.env`
 3. Fill out the `.env` file with your info from the prerequisites (such as bot token and MongoDB credentials)
-4. Run `docker-compose -p jaybot up` to start the bot
-  - Add a `-d` flag at the end to run the bot in the background without seeing the logs
+4. Run `docker compose up` in the `jaybot` folder to start the bot
+  - Add a `-d` flag at the end to run the bot in detached mode without seeing the logs
+
+> Note: Trying to run the bot directly using `npm` (or `bun`) scripts instead of `docker compose` might cause MongoDB errors if you are on Windows, due to weird issues in Bun/Node/MongoDB. Running it in Docker avoids the issue, since it uses a Linux environment.
 
 ### Rebuilding
 
-- If you make changes to the code:
-  - Rebuild the bot when starting it by running `docker-compose -p jaybot up --build`
+- If you only make changes to the code:
+  - Simply run `docker compose up` again to run the bot with your new changes
+- If you change/add/remove dependencies:
+  - You'll need to rebuild the container by running `docker compose up --build`
 
 ### Stopping
 
-To stop the bot, run `docker-compose -p jaybot down`.
+To stop the bot, run `docker compose down` (if in detached mode) or press `Ctrl+C` in the terminal (if not in detached mode).
 
 ## Changelogs:
+
+### v5.2
+- Switched to Bun runtime, leading to much faster building, installation, and development
+  - Discord bot backend now runs on Bun
+  - React frontend is now built/bundled by Bun
+- Updated and simplified dependencies
+  - Replaced several dependencies (e.g. `react-scripts` and `tsx`) with Bun
+- Integrated this repo with ElvenOps (my self-hosted CI/CD system) for continuous deployment on push to main branch
+- Simplified and improved Docker containerization by -- surprise, surprise -- using Bun
+- Switched from older `docker-compose` to modern `docker compose` commands
+- Updated logos in React frontend
 
 ### v5.1
 - Fixed monthly ranks not resetting
