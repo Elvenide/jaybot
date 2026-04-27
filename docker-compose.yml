@@ -1,13 +1,10 @@
-
 services:
   # A user-defined name for this container
   jaybot:
     container_name: jaybot
     build:
-        context: .
-        dockerfile: Dockerfile
-    stdin_open: true
-    tty: true
+      context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
     env_file:
       - .env
