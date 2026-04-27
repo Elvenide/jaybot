@@ -1,5 +1,5 @@
 # Jaybot v5.1
-An open-source Discord bot for the Zombie Horde Minecraft server, built with a TypeScript-Discord.js-ExpressJS backend, React frontend, and MongoDB database.
+An open-source Discord bot for the Zombie Horde Minecraft server, built with a TypeScript + Discord.js + ExpressJS backend, React frontend, MongoDB database, and the Bun runtime.
 
 Now powered by Elvenide's [Brynjolf suite](https://www.npmjs.com/package/@brynjolf/commands) - a set of efficient, powerful, and adaptive systems for command creation, command handling, and event handling! Combined with TypeScript, this suite makes Discord bot creation easier and more powerful than ever before.
 

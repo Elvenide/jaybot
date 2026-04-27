@@ -17,8 +17,8 @@
     "@babel/plugin-proposal-private-property-in-object": "7.21.11"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
+    "dev": "bun ./public/index.html",
+    "build": "bun build ./public/index.html --outdir=build --sourcemap --target=browser --minify --define:process.env.NODE_ENV='\"production\"' --env='BUN_PUBLIC_*'"
   },
   "eslintConfig": {
     "extends": [
