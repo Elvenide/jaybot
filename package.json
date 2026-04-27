@@ -9,8 +9,7 @@
     "name": "Elvenide"
   },
   "scripts": {
-    "build": "tsc",
-    "start": "tsx ./src/index.ts"
+    "start": "bun ./src/index.ts"
   },
   "dependencies": {
     "@brynjolf/commands": "^0.0.1",
