@@ -14,9 +14,6 @@ WORKDIR /app
 # Install project dependencies
 RUN bun ci
 
-# Build react page (in web/ directory)
-RUN cd /app/web && bun ci && bun run build
-
 # Return to app directory
 RUN cd /app
 
